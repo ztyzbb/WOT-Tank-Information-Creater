@@ -247,3 +247,4 @@ ModelManifest.xml
 *.iobj
 *.ipdb
 /WOT对照生成/Release/WOT对照生成.tlog
+/WOT对照生成/tanks.json
