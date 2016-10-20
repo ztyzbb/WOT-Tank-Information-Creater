@@ -13,7 +13,7 @@
 # Build results
 [Dd]ebug/
 [Dd]ebugPublic/
-#[Rr]elease/
+[Rr]elease/
 [Rr]eleases/
 [Xx]64/
 [Xx]86/
@@ -134,7 +134,7 @@ DocProject/Help/Html2
 DocProject/Help/html
 
 # Click-Once directory
-publish/
+#publish/
 
 # Publish Web Output
 *.[Pp]ublish.xml
@@ -243,8 +243,5 @@ ModelManifest.xml
 
 # FAKE - F# Make
 .fake/
-/WOT对照生成/wottoolslib.exe
-*.iobj
-*.ipdb
-/WOT对照生成/Release/WOT对照生成.tlog
-/WOT对照生成/tanks.json
+
+tanks.json

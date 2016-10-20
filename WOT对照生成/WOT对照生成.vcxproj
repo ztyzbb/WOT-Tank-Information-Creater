@@ -37,7 +37,7 @@
     <PlatformToolset>v140</PlatformToolset>
     <WholeProgramOptimization>true</WholeProgramOptimization>
     <CharacterSet>Unicode</CharacterSet>
-    <UseOfMfc>Dynamic</UseOfMfc>
+    <UseOfMfc>Static</UseOfMfc>
     <CLRSupport>false</CLRSupport>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
@@ -72,15 +72,14 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
-    <IncludePath>E:\TEMP\WOT对照生成\WOT对照生成;$(IncludePath)</IncludePath>
+    <IncludePath>$(ProjectDir);$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <LinkIncremental>true</LinkIncremental>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
-    <IncludePath>E:\TEMP\WOT对照生成\WOT对照生成;$(IncludePath)</IncludePath>
-    <OutDir>$(SolutionDir)$(Configuration)</OutDir>
+    <IncludePath>$(ProjectDir);$(IncludePath)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <LinkIncremental>false</LinkIncremental>
@@ -125,7 +124,20 @@
       <EnableCOMDATFolding>true</EnableCOMDATFolding>
       <OptimizeReferences>true</OptimizeReferences>
       <GenerateDebugInformation>true</GenerateDebugInformation>
+      <AdditionalDependencies>uafxcw.lib;nafxcw.lib;libcmt.lib</AdditionalDependencies>
+      <IgnoreSpecificDefaultLibraries>nafxcw.lib;uafxcw.lib;libcmt.lib</IgnoreSpecificDefaultLibraries>
     </Link>
+    <PostBuildEvent>
+      <Command>copy $(ProjectDir)wottoolslib.exe $(SolutionDir)Publish\wottoolslib.exe
+copy $(ProjectDir)libgcc_s_dw2-1.dll $(SolutionDir)Publish\libgcc_s_dw2-1.dll
+copy $(ProjectDir)libgettextlib-0-19-7.dll $(SolutionDir)Publish\libgettextlib-0-19-7.dll
+copy $(ProjectDir)libgettextsrc-0-19-7.dll $(SolutionDir)Publish\libgettextsrc-0-19-7.dll
+copy $(ProjectDir)libiconv-2.dll $(SolutionDir)Publish\libiconv-2.dll
+copy $(ProjectDir)libintl-8.dll $(SolutionDir)Publish\libintl-8.dll
+copy $(ProjectDir)msgunfmt.exe $(SolutionDir)Publish\msgunfmt.exe
+copy $(TargetPath) $(SolutionDir)Publish\$(TargetFileName)
+echo 您可以在$(SolutionDir)Publish中获取程序了</Command>
+    </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
     <ClCompile>

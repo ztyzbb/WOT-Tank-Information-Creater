@@ -13,7 +13,7 @@ using namespace std;
 int main()
 {
 	cout << "*********************************************************************" << endl
-		<< "*                           WOT对照生成 v1.0                        *" << endl
+		<< "*                           WOT对照生成 v1.1                        *" << endl
 		<< "*                    在坦克世界v0.9.15.1下测试通过                  *" << endl
 		<< "*  该程序修改并使用了来自World of Tanks Mod Tools Library的部分代码 *" << endl
 		<< "*                  http://wottoolslib.codeplex.com/                 *" << endl
@@ -25,7 +25,7 @@ int main()
 		<< "*                    具体使用方法详见Readme.md                      *" << endl
 		<< "*                         本软件遵循GPLv3协议                       *" << endl
 		<< "*                           祝您使用愉快！                          *" << endl
-		<< "*                       ztyzbb 2016.9.7 敬上！                      *" << endl
+		<< "*                      ztyzbb 2016.10.20 敬上！                     *" << endl
 		<< "*********************************************************************" << endl << endl;
 	wcin.imbue(locale("chs"));
 	wcout.imbue(locale("chs"));
@@ -289,7 +289,6 @@ int main()
 		tinyxml2::XMLElement *workingtank = root->FirstChildElement();//坦克节点
 		Json::Value currenttank;//生成对象，存储解析获得的坦克数据
 		string tagsstr;//存储tags字符串
-		string tagsfirst;//存储tags的第一个子串
 
 		while (workingtank)
 		{
@@ -300,33 +299,32 @@ int main()
 			currenttank["tier"] = atoi(workingtank->FirstChildElement("level")->GetText() + 1);//获取等级
 
 			tagsstr = workingtank->FirstChildElement("tags")->GetText();
-			tagsfirst = tagsstr.substr(0, tagsstr.find_first_of(' '));
-			if (tagsfirst == "lightTank")
+			if (tagsstr.find("lightTank") ==0)
 			{
 				currenttank["type"] = 1;
 				printf("解析到%-3d级LT  %s\n",currenttank["tier"].asInt(), currenttank["icon_orig"].asCString());
 			}
-			else if (tagsfirst == "mediumTank")
+			else if (tagsstr.find("mediumTank") == 0)
 			{
 				currenttank["type"] = 2;
 				printf("解析到%-3d级MT  %s\n", currenttank["tier"].asInt(), currenttank["icon_orig"].asCString());
 			}
-			else if (tagsfirst == "heavyTank")
+			else if (tagsstr.find("heavyTank")==0)
 			{
 				currenttank["type"] = 3;
 				printf("解析到%-3d级HT  %s\n", currenttank["tier"].asInt(), currenttank["icon_orig"].asCString());
 			}
-			else if (tagsfirst == "AT-SPG")
+			else if (tagsstr.find("AT-SPG")==0)
 			{
 				currenttank["type"] = 4;
 				printf("解析到%-3d级TD  %s\n", currenttank["tier"].asInt(), currenttank["icon_orig"].asCString());
 			}
-			else if (tagsfirst == "SPG")
+			else if (tagsstr.find("SPG")==0)
 			{
 				currenttank["type"] = 5;
 				printf("解析到%-3d级SPG %s\n", currenttank["tier"].asInt(), currenttank["icon_orig"].asCString());
 			}
-			else if(tagsfirst == "observer")
+			else if(tagsstr.find("observer")==0)
 			{
 				currenttank["type"] = 1;
 				cout << "解析到观察者 " << currenttank["icon_orig"].asCString() << endl;
