@@ -294,8 +294,8 @@ int main()
 		{
 			currenttank["id"] = atoi(workingtank->FirstChildElement("id")->GetText() + 1);//获取坦克id
 			currenttank["countryid"] = countryid;//设置国家代码
-			currenttank["title"] = strchr(workingtank->FirstChildElement("userString")->GetText(), ':') + 1;//设置标题，用于匹配翻译
-			currenttank["icon_orig"] = workingtank->Name();//设置坦克识别名称，可以用于匹配录像中的坦克名称
+			currenttank["title"] = strchr(workingtank->FirstChildElement("userString")->GetText(), ':') + 1;//设置标题，用于匹配翻译和录像中的坦克名称
+			currenttank["icon_orig"] = workingtank->Name();//设置坦克识别名称，可以用于匹配坦克图标
 			currenttank["tier"] = atoi(workingtank->FirstChildElement("level")->GetText() + 1);//获取等级
 
 			tagsstr = workingtank->FirstChildElement("tags")->GetText();
