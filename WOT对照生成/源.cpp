@@ -13,8 +13,8 @@ using namespace std;
 int main()
 {
 	cout << "*********************************************************************" << endl
-		<< "*                           WOT对照生成 v1.1                        *" << endl
-		<< "*                    在坦克世界v0.9.15.1下测试通过                  *" << endl
+		<< "*                           WOT对照生成 v1.2                        *" << endl
+		<< "*                    在坦克世界v0.9.16.0下测试通过                  *" << endl
 		<< "*  该程序修改并使用了来自World of Tanks Mod Tools Library的部分代码 *" << endl
 		<< "*                  http://wottoolslib.codeplex.com/                 *" << endl
 		<< "*                wottoolslib是修改自WoTModTools的类库               *" << endl
@@ -25,7 +25,7 @@ int main()
 		<< "*                    具体使用方法详见Readme.md                      *" << endl
 		<< "*                         本软件遵循GPLv3协议                       *" << endl
 		<< "*                           祝您使用愉快！                          *" << endl
-		<< "*                      ztyzbb 2016.10.20 敬上！                     *" << endl
+		<< "*                      ztyzbb 2016.11.02 敬上！                     *" << endl
 		<< "*********************************************************************" << endl << endl;
 	wcin.imbue(locale("chs"));
 	wcout.imbue(locale("chs"));
@@ -522,7 +522,7 @@ int main()
 	//删除临时文件
 
 	cout << endl 
-		<< "完成！ztyzbb于2016.9.6敬上！" << endl;
+		<< "完成！ztyzbb于2016.11.02敬上！" << endl;
 	system("pause");
 	return 0;
 }
